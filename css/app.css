@@ -81,7 +81,15 @@ header {
     color: aquamarine;
 }
 
+.bg-alert {
+    background-color: red;
+    color: white;
+    
+}
 
+.finish-game {
+    pointer-events: none;
+}
 
 
 
