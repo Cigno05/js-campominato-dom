@@ -51,22 +51,36 @@ function playTheGame () {
 
             //aggiungo/tolgo la classe all'elemento cliccato
             cellElement.classList.add('bg-dark');
+            cellElement.classList.add('selected');
             // console.log(cellElement)
+
+            //conteggio celle selezionate prima della bomba
+            let howManySelectedCell = document.getElementsByClassName('selected').length
+            console.log(howManySelectedCell);
+            //mettere le celle che hanno la classe 'bg-dark' in un array
             
             // se l'array includ() il numero della cella 
             if (bombs.includes(number)) {
                     // cella diventa rossa
-                    cellElement.classList.remove('bg-dark')
-                    cellElement.classList.add('bg-alert')
-                    gridElement.classList.add('finish-game')
-                    
-                }
+                cellElement.classList.remove('bg-dark');
+                cellElement.classList.remove('selected');
+                cellElement.classList.add('bg-alert');
+                gridElement.classList.add('finish-game');
+                gridElement.innerHTML += `
+                <div>
+                    <h1>HAI PERSO!</h1>
+                    <h2>Il tuo punteggio é ${howManySelectedCell - 1}</h2>
+                </div>
+                `;
+            } 
             
         })
     }
 }
 
 
+
+// valuta il livello del gioco in base alla scelta dell'utente
 function levelGame(value) {
     let level = 10
 
@@ -81,6 +95,7 @@ function levelGame(value) {
     return level
 
 }
+
 // funzione genera array lungo lenght con numeri diversi da min a max e return array
 function bombsGenerator (min, max, lenght) {
 
@@ -115,6 +130,10 @@ function bombsGenerator (min, max, lenght) {
     return randomViwed
 }
 
+//prendere celle selezionate e metterle mette in un array
+    //stampo la lunghezza dell'array
+    
+   
 
 
 
